@@ -1,0 +1,38 @@
+{
+  "benchmark": "qfl-flower-pennylane-digits38-v4",
+  "dataset": "sklearn-digits",
+  "classes": [
+    3,
+    8
+  ],
+  "positive_class": 8,
+  "qubits": 4,
+  "circuit_parameters": 24,
+  "model_parameters": 34,
+  "clients": 8,
+  "compromised_clients": 2,
+  "rounds": 60,
+  "local_epochs": 1,
+  "batch_size": 32,
+  "learning_rate": 0.5,
+  "train_fraction": 0.75,
+  "dirichlet_alpha": 5.0,
+  "minimum_client_samples": 20,
+  "public_seeds": [
+    11,
+    29
+  ],
+  "defenses": [
+    "fedavg",
+    "median",
+    "trimmed_mean"
+  ],
+  "perturbation_factor": 2.0,
+  "perturbation_floor": 0.01,
+  "score": "mean_clean_minus_attacked_macro_f1_percentage_points",
+  "input_features": 4,
+  "circuit_template": "AngleEmbedding(Y) + StronglyEntanglingLayers(2 layers)",
+  "measurement": "PauliX expectation on all four wires",
+  "federated_framework": "Flower NumPyClient and built-in aggregation strategies",
+  "max_attack_rounds": 30
+}

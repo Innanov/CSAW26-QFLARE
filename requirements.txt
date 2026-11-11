@@ -1,0 +1,6 @@
+numpy==2.3.5
+scikit-learn==1.8.0
+scipy==1.17.0
+threadpoolctl==3.6.0
+PennyLane==0.45.1
+flwr==1.20.0
