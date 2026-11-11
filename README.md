@@ -6,7 +6,9 @@ Develop an attack that reduces the performance of a federated quantum classifier
 
 Eight clients train a shared model to recognize handwritten **3** and **8**. You control the quantum circuit updates sent by **two clients**. You may change those updates in **at most 30 of the 60 training rounds**. Your goal is to achieve the highest average drop in test macro-F1 across the evaluation cases.
 
-**Edit only `attack.py`. Clone this repository and create your own private repository for your submission. Include your final attack.py and the evaluator-generated outputs/result.json. Invite @Innanov as a collaborator so I can review your code and verify your score.**
+**For the required challenge, edit only `attack.py`. Submit your attack code and the JSON produced by the evaluator.**
+
+Optional extensions worth up to **30 bonus points** are described in Section 7. Put extension work under `extensions/`.
 
 ## 1. Set up your environment
 
@@ -157,12 +159,42 @@ python evaluate.py --submission attack.py --output outputs/result.json
 python score.py outputs/result.json --submission attack.py
 ```
 
-Submit **both files** to the teaching team.
+Create your own **private GitHub repository** from a clone of this repository. Include these two final files.
 
 1. `attack.py`
 2. `outputs/result.json`
 
-Generate the JSON using the exact code you submit. The teaching team can replay your score and rerun your source to verify the result.
+Generate the JSON using the exact code you submit. Invite **@Innanov** as a collaborator so we can review your code, replay your score, and rerun your source to verify the result.
+
+If you complete any optional extensions, include their code, reports, and saved results under `extensions/` in the same private repository.
+
+
+## 7. Optional extensions — up to 30 bonus points
+
+You may complete any or all of the following extensions. Each extension is worth **up to 10 bonus points**, for a maximum of **30 bonus points**. Bonus points are assessed separately from the required challenge score.
+
+| Extension | Requirement | Bonus |
+| --- | --- | ---: |
+| **More classes** | Extend the binary task to at least four classes. Report clean macro-F1, attacked macro-F1, and the performance drop. | **+10** |
+| **Attack timing** | Compare at least three schedules, such as the first 30 rounds, the last 30 rounds, and alternating rounds. Use the same attack method and 30 attack rounds in each comparison. | **+10** |
+| **Number of attack rounds** | Compare budgets of 10, 20, and 30 attack rounds. Use the same attack method and scheduling rule, such as evenly spacing attacks across training. | **+10** |
+
+**Timing studies which rounds to attack. Budget studies how many rounds to attack.** They earn separate bonuses.
+
+### Keep comparisons fair
+
+- Within each setting, use matching clean and attacked splits, initializations, client partitions, and training budgets.
+- For timing and budget comparisons, keep the model, data, defenses, and per-client perturbation limit fixed.
+- Report results for both public seeds and all three defenses.
+- For the multiclass extension, adapt the classifier head and calculate macro-F1 across all selected classes in your extension code. The supplied `score.py` evaluates the required binary task.
+
+### Extension files and assessment
+
+Place the code, saved results, and a short explanation of your findings for each extension under `extensions/` in your private repository. Include the settings, random seeds, results table, and command needed to reproduce each experiment.
+
+For changes to the model or metric calculation, use separate extension scripts or copies of the relevant modules inside `extensions/`. The required submission uses the released evaluator and root-level `attack.py`.
+
+Each extension is assessed for correctness, fair comparisons, reproducibility, and interpretation of the results.
 
 ## Files in this repository
 
@@ -177,7 +209,7 @@ Generate the JSON using the exact code you submit. The teaching team can replay 
 | `rules.json` | Fixed benchmark configuration and limits. | No |
 | `requirements.txt` | Dependency versions. | No |
 
-The evaluator files define the shared benchmark and are checked by the scoring script.
+This table applies to the required challenge. Place modified copies used for optional extensions under `extensions/`. The evaluator files define the shared benchmark and are checked by the scoring script.
 
 ## Benchmark details
 
