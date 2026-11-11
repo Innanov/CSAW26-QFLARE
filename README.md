@@ -6,7 +6,7 @@ Develop an attack that reduces the performance of a federated quantum classifier
 
 Eight clients train a shared model to recognize handwritten **3** and **8**. You control the quantum circuit updates sent by **two clients**. You may change those updates in **at most 30 of the 60 training rounds**. Your goal is to achieve the highest average drop in test macro-F1 across the evaluation cases.
 
-**Edit only `attack.py`. Submit your attack code and the JSON produced by the evaluator.**
+**Edit only `attack.py`. Clone this repository and create your own private repository for your submission. Include your final attack.py and the evaluator-generated outputs/result.json. Invite @Innanov as a collaborator so I can review your code and verify your score.**
 
 ## 1. Set up your environment
 
